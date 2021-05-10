@@ -1,0 +1,18 @@
+pipeline {
+	agent any
+	stages {
+		stage("Terraform") {
+			steps {
+				script {
+					sh '''
+					echo "Build machine using Terraform"
+					sudo rm -rf /etc/ansible/hosts
+					cd TF-code/ec2_creation && sudo terraform init && terraform apply -auto-approve
+					cd TF-code/ec2_creation && sudo terraform output public_ip >> /etc/ansible/hosts
+					'''
+					}
+				}
+			}
+		}
+	}
+		
