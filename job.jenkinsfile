@@ -8,6 +8,7 @@ pipeline {
 					echo "Build machine using Terraform"
 					sudo rm -rf /etc/ansible/hosts
 					sudo touch /etc/ansible/hosts
+					sudo chmod 666 /etc/ansible/hosts
 					cd TF-code/ec2_creation && sudo terraform init && terraform apply -auto-approve && sudo terraform output public_ip >> /etc/ansible/hosts
 					'''
 					}
