@@ -7,5 +7,5 @@ resource "aws_instance" "ec2_instance" {
     instance_type = var.instance_type
     vpc_security_group_ids = [var.sg]
     tags = {Name = "HTTP_SERVER"}
-    key_name = "terraform.pub"
+    key_name = "prathang_key"
 }
